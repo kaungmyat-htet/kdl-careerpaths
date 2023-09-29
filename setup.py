@@ -140,7 +140,11 @@ setup(
         include=['kdl_careerpaths', 'kdl_careerpaths.*'],
         exclude=["*tests"],
     ),
-
+    entry_points={
+        'lms.djangoapp': [
+            'kdl-careerpaths = kdl_careerpaths.apps:KdlCareerpathsConfig',
+        ],
+    },
     include_package_data=True,
     install_requires=load_requirements('requirements/base.in'),
     python_requires=">=3.8",
