@@ -21,14 +21,14 @@ certifi==2023.7.22
     # via
     #   -r requirements/quality.txt
     #   requests
-cffi==1.15.1
+cffi==1.16.0
     # via
     #   -r requirements/quality.txt
     #   cryptography
     #   pynacl
 chardet==5.2.0
     # via diff-cover
-charset-normalizer==3.2.0
+charset-normalizer==3.3.0
     # via
     #   -r requirements/quality.txt
     #   requests
@@ -85,6 +85,8 @@ django-crum==0.7.9
     #   -r requirements/quality.txt
     #   edx-django-utils
     #   edx-toggles
+django-environ==0.11.2
+    # via -r requirements/quality.txt
 django-waffle==4.0.0
     # via
     #   -r requirements/quality.txt
@@ -217,7 +219,7 @@ pyjwt[crypto]==2.8.0
     #   -r requirements/quality.txt
     #   drf-jwt
     #   edx-drf-extensions
-pylint==2.17.6
+pylint==2.17.7
     # via
     #   -r requirements/quality.txt
     #   edx-lint
@@ -257,8 +259,6 @@ pytest==7.4.2
 pytest-cov==4.1.0
     # via -r requirements/quality.txt
 pytest-django==4.5.2
-    # via -r requirements/quality.txt
-python-dotenv==1.0.0
     # via -r requirements/quality.txt
 python-slugify==8.0.1
     # via

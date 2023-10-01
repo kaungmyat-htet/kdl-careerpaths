@@ -138,7 +138,7 @@ class Level(models.Model):
     def get_name(self):
         return "%s"%(str(self.name))
 
-
+dashboard
 class Course(models.Model):
     """
     TODO: replace with a brief description of the model.
