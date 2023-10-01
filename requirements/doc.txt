@@ -24,12 +24,12 @@ certifi==2023.7.22
     # via
     #   -r requirements/test.txt
     #   requests
-cffi==1.15.1
+cffi==1.16.0
     # via
     #   -r requirements/test.txt
     #   cryptography
     #   pynacl
-charset-normalizer==3.2.0
+charset-normalizer==3.3.0
     # via
     #   -r requirements/test.txt
     #   requests
@@ -67,6 +67,8 @@ django-crum==0.7.9
     #   -r requirements/test.txt
     #   edx-django-utils
     #   edx-toggles
+django-environ==0.11.2
+    # via -r requirements/test.txt
 django-waffle==4.0.0
     # via
     #   -r requirements/test.txt
@@ -214,8 +216,6 @@ pytest-cov==4.1.0
     # via -r requirements/test.txt
 pytest-django==4.5.2
     # via -r requirements/test.txt
-python-dotenv==1.0.0
-    # via -r requirements/test.txt
 python-slugify==8.0.1
     # via
     #   -r requirements/test.txt
@@ -245,7 +245,7 @@ restructuredtext-lint==1.4.0
     # via doc8
 rfc3986==2.0.0
     # via twine
-rich==13.5.3
+rich==13.6.0
     # via twine
 secretstorage==3.3.3
     # via keyring

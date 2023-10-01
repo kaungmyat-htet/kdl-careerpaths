@@ -3,9 +3,9 @@ import os
 import json
 import requests
 import logging
-from dotenv import load_dotenv
 
 # django stuff
+from django.conf import settings
 from django.contrib.auth import get_user_model
 from django.http.response import HttpResponseNotFound
 from django.utils.translation import gettext as _
@@ -18,6 +18,7 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 # open edx stuff
 from opaque_keys.edx.keys import CourseKey
+import edx_api_doc_tools as apidocs
 
 from edx_rest_framework_extensions.auth.jwt.authentication import JwtAuthentication
 from edx_rest_framework_extensions.auth.session.authentication import SessionAuthenticationAllowInactiveUser
@@ -32,9 +33,6 @@ from kdl_careerpaths.api.v1.utils import get_course_image
 
 log = logging.getLogger(__name__)
 
-load_dotenv()
-
-LMS_COURSES_API_URL = os.getenv('LMS_URL')
 
 SAFE_METHODS = ['GET', 'HEAD', 'OPTIONS']
 
@@ -154,6 +152,10 @@ class LevelAPIView(APIView):
     permission_classes = (permissions.IsAdminUser,)
     REQUIRED_KEYS = ['name']
 
+    @apidocs.schema(
+        
+    )
+
     def _validate(self, level_object):
         """
         Perform validation
@@ -165,6 +167,9 @@ class LevelAPIView(APIView):
         return level_object
 
     def get(self, request):
+        """
+        Returns levels for careerpath courses.
+        """
         response = {}
         levels = Level.objects.all()
         levels = [{"id": level.id, "name": level.name} for level in levels]
@@ -205,7 +210,8 @@ class CareerPathCourseAPIView(APIView):
             Course.objects.get(id=path_course_object["course_id"])
         except Course.DoesNotExist:
             log.info("Course not found.")
-            url = LMS_COURSES_API_URL + path_course_object["course_id"] + "/"
+            log.info(settings.LMS_URL)
+            url = settings.LMS_URL + "api/courses/v1/courses/" + path_course_object["course_id"] + "/"
             response = requests.get(url)
             course_info = response.json()
             print(course_info)

@@ -53,7 +53,6 @@ class KdlCareerpathsConfig(AppConfig):
             # https://github.com/openedx/edx-platform/blob/2dc79bcab42dafed2c122eb808cdd5604327c890/openedx/core/djangoapps/plugins/constants.py#L25 .
             # Other IDAs may use different values.
             'lms.djangoapp': {
-
                 # Configure each settings, as needed.
                 'production': {
 
@@ -64,6 +63,9 @@ class KdlCareerpathsConfig(AppConfig):
                 'common': {
                     PluginSettings.RELATIVE_PATH: 'settings.common',
                 },
+                'devstack': {
+                    PluginSettings.RELATIVE_PATH: 'settings.devstack',
+                }
             }
         },
     }
