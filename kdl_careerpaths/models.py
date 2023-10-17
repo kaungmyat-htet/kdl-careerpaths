@@ -1,7 +1,6 @@
 """
 Database models for kdl_careerpaths.
 """
-# from django.db import models
 import logging
 from django.db import models, IntegrityError
 
@@ -17,7 +16,7 @@ class CareerPathManager(models.Manager):
             log.info("The career path is created")
         except IntegrityError:
             log.info(
-                "An IntegrityError was raised when trying to create a new career path for %s:%s", name, description
+                "An IntegrityError was raised when trying to create a new career path for %s:%s", careerpath_obj["name"], careerpath_obj["description"]
             )
             obj = self.get(
                 name=careerpath_obj["name"],
@@ -79,24 +78,6 @@ class PathCourseManager(models.Manager):
 
         return obj, is_created
     
-class CareerPath(models.Model):
-    id = models.AutoField(primary_key=True)
-    name = models.CharField(max_length=25, null=False)
-    description = models.TextField()
-
-    objects = CareerPathManager()
-
-    def __str__(self) -> str:
-        return f"{self.id} {self.name}"
-
-    @property
-    def get_name(self):
-        return "%s"%(str(self.name))
-    
-    @property
-    def courses_count(self):
-        return PathCourse.objects.filter(careerpath=self.id).count()
-
 class CareerPath(models.Model):
     id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=25, null=False)

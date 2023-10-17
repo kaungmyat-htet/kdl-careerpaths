@@ -39,7 +39,7 @@ LOCALE_PATHS = [
     root('kdl_careerpaths', 'conf', 'locale'),
 ]
 
-ROOT_URLCONF = 'kdl_careerpaths.urls'
+ROOT_URLCONF = 'kdl_careerpaths.api.urls'
 
 SECRET_KEY = 'insecure-secret-key'
 

@@ -152,10 +152,6 @@ class LevelAPIView(APIView):
     permission_classes = (permissions.IsAdminUser,)
     REQUIRED_KEYS = ['name']
 
-    @apidocs.schema(
-        
-    )
-
     def _validate(self, level_object):
         """
         Perform validation
